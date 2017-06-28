@@ -1,0 +1,18 @@
+<body>
+  {{> App}}
+</body>
+
+<template name="App">
+
+  <h2>Upload Image</h2>
+  <input type="file" name="image" class="my-image-input">
+  <hr />
+
+  <h2>Show Images</h2>
+  {{#each images}}
+  <div>
+    <h3>{{this.url}}</h3>
+    <img src="{{this.url}}" width="200">
+  </div>
+  {{/each}}
+</template>
