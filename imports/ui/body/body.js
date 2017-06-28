@@ -24,15 +24,13 @@ Template.App.events({
         } else {
           console.dir(fileObj);
           console.log('New image:', fileObj._id);
-          return true;
-          // handle success depending what you need to do
-          var userId = Meteor.userId();
-          var imagesURL = {
-            "profile.image": "/cfs/files/images/" + fileObj._id
-          };
-          Meteor.users.update(userId, {$set: imagesURL});
+          console.log('      url:', fileObj.url());
+          console.log('      url:', "/cfs/files/images/" + fileObj._id);
         }
       });
     });
   },
+  'click .clear-images'(event, template) {
+    Images.find().fetch().map(f => Images.remove(f._id));
+  }
 });
